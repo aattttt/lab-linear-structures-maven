@@ -15,28 +15,29 @@ public class ArrayBasedQueueExperiment {
    */
   public static void main(String[] args) throws Exception {
     ReportingLinearStructure<String> expt =
-        new ReportingLinearStructure<String>(new ArrayBasedQueue<String>(8), "expt.");
+        new ReportingLinearStructure<String>(new ArrayBasedQueue<String>(4), "expt.");
     // Put in a few values, then remove two
-    expt.isEmpty();
+    expt.isEmpty(); // true
     expt.put("a");
-    expt.peek();
+    expt.peek(); // a
     expt.put("b");
-    expt.peek();
+    expt.peek(); // b
     expt.put("c");
-    expt.peek();
-    expt.get();
-    expt.peek();
-    expt.get();
-    expt.put("x");
-    expt.peek();
-    expt.get();
-    expt.get();
+    expt.peek(); // c
+    expt.get(); //  pop c
+    expt.peek(); // b 
+    expt.get(); // pop b
+    expt.put("x"); // x at front
+    expt.peek(); // x
+    expt.get(); // pop x
+    expt.peek(); 
+    expt.get(); // pop a
 
     // We've put and get the same number of elements, it
     // should be empty
-    expt.isEmpty();
+    expt.isEmpty(); // true
 
-    /*
+  
     // It's always good to see what happens after you've cleared
     // out a structure. So add a few more elements.
     // We'll leave this test until we've worked out some kinks (Dave?)
@@ -50,7 +51,7 @@ public class ArrayBasedQueueExperiment {
     expt.get();
     // And we're back down to the empty queue
     expt.isEmpty();
-    */
+ 
 
     /*
     // An iteration experiment, once we've workd out some kinks (Ray?)
