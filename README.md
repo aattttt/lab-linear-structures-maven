@@ -5,6 +5,7 @@ Authors:
 * Samuel A. Rebelsky
 * A.J. Trimble
 * Jaffar Jerar
+* Natalie Nardone
 
 The latest version of the CSC-207 lab on linear structures, now with Maven.
 
