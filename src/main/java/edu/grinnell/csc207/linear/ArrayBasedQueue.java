@@ -128,11 +128,9 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
   // | Fields |
   // +--------+
 
-  ArrayBasedQueue<T> abq;
+  private ArrayBasedQueue<T> abq;
 
-  int i;
-
-  int holder;
+  private int currentIndex;
 
   // +--------------+----------------------------------------------------
   // | Constructors |
@@ -142,7 +140,7 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
    * Create a new iterator.
    */
   public ArrayBasedQueueIterator(ArrayBasedQueue<T> q) {
-    this.i = 0;
+    this.currentIndex = this.abq.front;
     this.abq = q;
   } // ArrayBasedQueueIterator
 
@@ -155,19 +153,19 @@ class ArrayBasedQueueIterator<T> implements Iterator<T> {
     if (!this.hasNext()) {
       throw new NoSuchElementException("no elements remain");
     } // if no elements
-    holder = i;
-    return this.abq.values[this.i++];
+    return this.abq.values[this.abq.back() - 1];
   } // next()
 
   @Override
   public boolean hasNext() {
-    return this.i < this.abq.back();
+    return this.abq.isFull();
   } // hasNext()
 
   @Override
   public void remove() throws UnsupportedOperationException {
-    for (int i = holder + 1; i < this.abq.back(); i++) {
-      this.abq.values[i - 1] = this.abq.values[i];
+    int elementsFollowing = this.abq.size - currentIndex;
+    for (int i = 0; i < elementsFollowing; i++) {
+      this.abq.values[this.abq.back() - 1] = this.abq.values[this.abq.back() - 2];
     }
     this.abq.size--; 
   } // remove()
