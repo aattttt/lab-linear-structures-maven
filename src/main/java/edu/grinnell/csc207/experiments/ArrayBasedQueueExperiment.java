@@ -16,7 +16,7 @@ public class ArrayBasedQueueExperiment {
   public static void main(String[] args) throws Exception {
     ReportingLinearStructure<String> expt =
         new ReportingLinearStructure<String>(new ArrayBasedQueue<String>(4), "expt.");
-    /*// Put in a few values, then remove two
+    // Put in a few values, then remove two
     expt.isEmpty(); // true
     expt.put("a");
     expt.peek(); // a
@@ -50,7 +50,7 @@ public class ArrayBasedQueueExperiment {
     expt.get();
     expt.get();
     // And we're back down to the empty queue
-    expt.isEmpty(); */
+    expt.isEmpty();
  
 
     
